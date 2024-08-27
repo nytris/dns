@@ -28,7 +28,7 @@ use React\Dns\Resolver\ResolverInterface;
 class Dns implements DnsInterface
 {
     /**
-     * @param string[] $fallbackNameservers
+     * @param string[] $fallbackNameservers Google's public DNS by default.
      */
     public function __construct(
         private readonly array $fallbackNameservers = ['8.8.8.8']
@@ -42,7 +42,8 @@ class Dns implements DnsInterface
     {
         $dnsFactory = new DnsFactory();
 
-        // Try to load nameservers from system config or default to Google's public DNS.
+        // (As per react/socket) try to load nameservers from system config (`resolv.conf` etc.)
+        // or default to the configured fallback nameservers.
         $config = DnsConfig::loadSystemConfigBlocking();
 
         if (!$config->nameservers) {
