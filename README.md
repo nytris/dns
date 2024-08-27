@@ -26,6 +26,7 @@ use Nytris\Boot\BootConfig;
 use Nytris\Boot\PlatformConfig;
 use Nytris\Cache\Adapter\ReactCacheAdapter;
 use Nytris\Dns\Dns;
+use React\Socket\Connector;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 $bootConfig = new BootConfig(new PlatformConfig(__DIR__ . '/var/cache/nytris/'));
